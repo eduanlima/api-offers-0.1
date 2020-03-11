@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* br.com.services.Welcome
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* br.com.services
