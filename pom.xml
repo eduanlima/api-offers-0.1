@@ -20,14 +20,21 @@
 					<source>11</source>
 					<target>11</target>
 				</configuration>
-
-				<dependencies>
-					<dependency>
-						<groupId>org.ow2.asm</groupId>
-						<artifactId>asm</artifactId>
-						<version>6.1.1</version>
-					</dependency>
-				</dependencies>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.heroku</groupId>
+									<artifactId>webapp-runner</artifactId>
+									<version>9.0.30.0</version>
+									<destFileName>webapp-runner.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
