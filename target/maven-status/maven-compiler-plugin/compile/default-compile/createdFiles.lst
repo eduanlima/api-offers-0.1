@@ -30,6 +30,7 @@ br\com\util\PropertiesDB.class
 br\com\model\services\BannerOfferService.class
 br\com\model\dao\AddressDao.class
 br\com\model\entities\Sector.class
+br\com\services\Main.class
 br\com\services\ServicesAddressAPI.class
 br\com\model\services\StoreService.class
 br\com\model\dao\impl\StoreDaoJDBC.class
