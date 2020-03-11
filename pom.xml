@@ -105,5 +105,12 @@
 			<artifactId>heroku-json-jersey-client</artifactId>
 			<version>0.40</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.jsimone</groupId>
+			<artifactId>webapp-runner</artifactId>
+			<version>9.0.27.1</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>
