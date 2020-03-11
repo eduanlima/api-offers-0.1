@@ -2,32 +2,39 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<properties>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.api-offers</groupId>
 	<artifactId>api-offers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.10</version>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<source>11</source>
-					<target>11</target>
-				</configuration>
+				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
 						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>com.heroku</groupId>
+									<groupId>com.github.jsimone</groupId>
 									<artifactId>webapp-runner</artifactId>
-									<version>9.0.30.0</version>
+									<version>9.0.24.0</version>
 									<destFileName>webapp-runner.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
@@ -35,22 +42,9 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.2.1</version>
-				<configuration>
-					<warSourceDirectory>WebContent</warSourceDirectory>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>com.heroku.sdk</groupId>
-				<artifactId>heroku-maven-plugin</artifactId>
-				<version>2.0.16</version>
-			</plugin>
 		</plugins>
 	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>asm</groupId>
@@ -107,10 +101,29 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.jsimone</groupId>
+			<groupId>com.heroku</groupId>
 			<artifactId>webapp-runner</artifactId>
-			<version>9.0.27.1</version>
-			<scope>provided</scope>
+			<version>9.0.30.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.heroku.sdk</groupId>
+			<artifactId>heroku-deploy</artifactId>
+			<version>2.0.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
+			<type>maven-plugin</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>3.2.3</version>
+			<type>maven-plugin</type>
 		</dependency>
 	</dependencies>
 </project>
