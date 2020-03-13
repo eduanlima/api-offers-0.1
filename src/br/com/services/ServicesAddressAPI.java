@@ -7,14 +7,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
 import br.com.model.entities.Address;
 import br.com.model.services.AddressService;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
 @Path("/adresses")
 public class ServicesAddressAPI {
 	private static final String CHARSET_UTF8 = ";charset=utf-8";
 	
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String findAll(){
+		return "it's only a test";
+	}
+		
+	/*
 	@GET
 	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON + CHARSET_UTF8)
@@ -24,4 +32,5 @@ public class ServicesAddressAPI {
 		adresses = serviceAddress.findAll();
 		return adresses;
 	}
+	*/
 }
