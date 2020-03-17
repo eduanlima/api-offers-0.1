@@ -15,11 +15,9 @@ public class DB {
 	public static Connection getConnection() {
 		if (connection == null) {
 			try {
-				/*
 				Properties properties = new PropertiesDB().getPropertiesDB();
 				Class.forName("org.postgresql.Driver");
 				connection = DriverManager.getConnection(properties.getProperty("dburl"), properties);
-				*/
 			}
 			catch (Exception error) {
 				throw new RuntimeException(error.getMessage());
