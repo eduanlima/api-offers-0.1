@@ -1,22 +1,15 @@
 package br.com.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import br.com.model.entities.Address;
-import br.com.model.services.AddressService;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
 @Path("/adresses")
-public class ServicesAddressAPI {
-	private static final String CHARSET_UTF8 = ";charset=utf-8";
+public class ServicesAddressAPI{
 	
 	@GET
+	@Path("/all")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String findAll(){
 		return "it's only a test";
