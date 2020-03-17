@@ -1,5 +1,6 @@
 package br.com.util;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -9,11 +10,10 @@ public class PropertiesDB {
 		
 		Properties properties = new Properties();
 		
-		String fileDbProperties = "db.properties";
+		String fileDbProperties = "src/resources/db.properties";
 		
-		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(fileDbProperties);
-	
 		try{
+			InputStream inputStream = new FileInputStream(fileDbProperties);
 			properties.load(inputStream);
 		}
 		catch(IOException error){

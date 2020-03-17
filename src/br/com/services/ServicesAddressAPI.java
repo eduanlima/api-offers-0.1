@@ -16,7 +16,6 @@ public class ServicesAddressAPI{
 	private static final String CHARSET_UTF8 = ";charset=utf-8";
 	
 	@GET
-	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON + CHARSET_UTF8)
 	public List<Address> findAll(){
 		AddressService serviceAddress = new AddressService();
