@@ -13,6 +13,7 @@ import br.com.model.entities.Offer;
 import br.com.model.entities.Product;
 import br.com.model.entities.Sector;
 import br.com.model.entities.Store;
+import br.com.model.entities.TypeStore;
 
 public class StoreDaoJDBC implements StoreDao{
 	private static final String SELECT_ALL = "SELECT * FROM store;";
@@ -45,6 +46,8 @@ public class StoreDaoJDBC implements StoreDao{
 				store = new Store();
 				store.setId(resultSet.getInt("id"));
 				store.setName(resultSet.getString("name"));
+				store.setImage(resultSet.getString("image"));
+				store.setType(new TypeStore(resultSet.getInt("type_store"), null));
 			}
 			
 			return store;
