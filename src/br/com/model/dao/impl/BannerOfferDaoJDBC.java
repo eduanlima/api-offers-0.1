@@ -43,10 +43,8 @@ public class BannerOfferDaoJDBC implements BannerOfferDao{
 					store.setId(resultSet.getInt("store"));
 				}
 				
-				if (sector == null) {
-					sector = new Sector();
-					sector.setId(resultSet.getInt("sector"));
-				}
+				sector = new Sector();
+				sector.setId(resultSet.getInt("sector"));
 				
 				bannerOffer = new BannerOffer();
 				bannerOffer.setStore(store);
