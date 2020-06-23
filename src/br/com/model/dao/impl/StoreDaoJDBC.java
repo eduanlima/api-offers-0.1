@@ -78,6 +78,7 @@ public class StoreDaoJDBC implements StoreDao{
 				Store store = new Store();
 				store.setId(resultSet.getInt("id"));
 				store.setName(resultSet.getString("name"));
+				store.setImage(resultSet.getString("image"));
 				listStore.add(store);
 			}
 			
