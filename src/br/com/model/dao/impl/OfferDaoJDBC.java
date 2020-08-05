@@ -19,9 +19,18 @@ public class OfferDaoJDBC implements OfferDao{
 			+ "offer_banner.product AS id_product, offer_banner.description AS offer_description, price, image_min, date_initial, date_limit, "
 			+ "mapped, sector.id AS sector "
 			+ "FROM store, offer_banner, product, sector "
-			+ "WHERE store.id = ? AND offer_banner.store = store.id AND offer_banner.mapped = true AND offer_banner.status = true AND"
+			+ "WHERE store.id = ? AND offer_banner.store = store.id AND offer_banner.mapped = true AND offer_banner.status = true AND "
 			+ "product.id = offer_banner.product AND product.sector = sector.id "
 			+ "ORDER BY price;";
+	
+	private static final String SELECT_ALL_OFFER_SINGLE = "SELECT store.name AS name, store.image AS store_image, offer_single.store AS id_store, \r\n" + 
+			"offer_single.product AS id_product, offer_single.description AS offer_description, price, image_min, date_initial, date_limit, \r\n" + 
+			"mapped, sector.id AS sector \r\n" + 
+			"FROM store, offer_single, product, sector \r\n" + 
+			"WHERE store.id = ? AND offer_single.store = store.id AND offer_single.mapped = true AND offer_single.status = true AND\r\n" + 
+			"product.id = offer_single.product AND product.sector = sector.id \r\n" + 
+			"ORDER BY price;";
+	
 	private Connection connection = null;
 	
 	public OfferDaoJDBC(Connection connection) {
@@ -29,7 +38,7 @@ public class OfferDaoJDBC implements OfferDao{
 	}
 	
 	@Override
-	public List<Offer> findAllByStore(Integer id_store) {
+	public List<Offer> findAllOfferBanner(Integer id_store) {
 		PreparedStatement query = null;
 		ResultSet resultSet = null;
 		Store store = null;
@@ -41,6 +50,70 @@ public class OfferDaoJDBC implements OfferDao{
 		
 		try {
 			query = connection.prepareStatement(SELECT_ALL_OFFER_BANNER);
+			query.setInt(1, id_store);
+			
+			resultSet = query.executeQuery();
+			
+			while (resultSet.next()) {
+				//Get datas store
+				if (store_id_aux  == 0) {
+					store_id_aux = resultSet.getInt("id_store");
+					
+					store = new Store();
+					store.setId(store_id_aux );
+					store.setName(resultSet.getString("name"));
+					store.setImage(resultSet.getString("store_image"));
+				}
+				
+				//Get sector
+				sector = new Sector();
+				sector.setId(resultSet.getInt("sector"));
+				
+				//Get datas product
+				product = new Product();
+				product.setId(resultSet.getInt("id_product"));
+				product.setSector(sector);
+				
+				//Get datas offer
+				offer = new Offer();
+				offer.setStore(store);
+				offer.setProduct(product);
+				offer.setDescription(resultSet.getString("offer_description"));
+				offer.setPrice(resultSet.getDouble("price"));
+				offer.setImageMin(resultSet.getString("image_min"));
+				offer.setDateInitial(resultSet.getDate("date_initial"));
+				offer.setDateLimit(resultSet.getDate("date_limit"));
+				offer.setMapped(resultSet.getBoolean("mapped"));
+				offers.add(offer);
+			}
+			
+			return offers;
+			
+		}
+		catch(SQLException error) {
+			throw new RuntimeException(error);
+		}
+		finally {
+			DB.closeResultset(resultSet);
+			DB.closeStatement(query);
+			DB.closeConnection();
+			DB.replaceConnection();
+		}
+	}
+
+	@Override
+	public List<Offer> findAllOfferSingle(Integer id_store) {
+		PreparedStatement query = null;
+		ResultSet resultSet = null;
+		Store store = null;
+		Sector sector = null;
+		Product product = null;
+		Offer offer = null;
+		List<Offer> offers = new ArrayList<Offer>();
+		int store_id_aux = 0;
+		
+		try {
+			query = connection.prepareStatement(SELECT_ALL_OFFER_SINGLE);
 			query.setInt(1, id_store);
 			
 			resultSet = query.executeQuery();

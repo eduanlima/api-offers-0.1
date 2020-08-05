@@ -9,7 +9,11 @@ import br.com.model.entities.Offer;
 public class OfferService {
 	private OfferDao offerDao = DaoFactory.createOffer();
 	
-	public List<Offer> findAllByStore(Integer id_store) {
-		return offerDao.findAllByStore(id_store);
+	public List<Offer> findAllOfferBanner(Integer id_store) {
+		return offerDao.findAllOfferBanner(id_store);
+	}
+	
+	public List<Offer> findAllOfferSingle(Integer id_store) {
+		return offerDao.findAllOfferSingle(id_store);
 	}
 }

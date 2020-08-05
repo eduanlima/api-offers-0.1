@@ -16,7 +16,7 @@ import br.com.model.entities.Store;
 
 public class BannerOfferDaoJDBC implements BannerOfferDao{
 	
-	private static final String SELECT_ALL = "SELECT * FROM banner_offer WHERE store = ?;";
+	private static final String SELECT_ALL = "SELECT * FROM banner_offer WHERE store = ? AND status = true;";
 	private Connection connection = null;
 	
 	public BannerOfferDaoJDBC(Connection connection) {
@@ -28,7 +28,6 @@ public class BannerOfferDaoJDBC implements BannerOfferDao{
 		PreparedStatement query = null;
 		ResultSet resultSet = null;
 		Store store = null;
-		Sector sector = null;
 		BannerOffer bannerOffer = null;
 		List<BannerOffer> bannersOffer = new ArrayList<BannerOffer>();
 		
@@ -43,15 +42,12 @@ public class BannerOfferDaoJDBC implements BannerOfferDao{
 					store.setId(resultSet.getInt("store"));
 				}
 				
-				sector = new Sector();
-				sector.setId(resultSet.getInt("sector"));
-				
 				bannerOffer = new BannerOffer();
 				bannerOffer.setStore(store);
-				//bannerOffer.setSector(sector);
-				bannerOffer.setImage(resultSet.getString("imageMin"));
+				bannerOffer.setTitle(resultSet.getString("title"));
 				bannerOffer.setDateInitial(resultSet.getDate("date_initial"));
 				bannerOffer.setDateLimit(resultSet.getDate("date_limit"));
+				bannerOffer.setImage(resultSet.getString("image"));
 				bannerOffer.setStatus(resultSet.getBoolean("status"));
 				
 				bannersOffer.add(bannerOffer);

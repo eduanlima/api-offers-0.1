@@ -3,6 +3,7 @@ package br.com.model.dao;
 import br.com.db.DB;
 import br.com.model.dao.impl.AddressDaoJDBC;
 import br.com.model.dao.impl.BannerOfferDaoJDBC;
+import br.com.model.dao.impl.BannerSliderDaoJDBC;
 import br.com.model.dao.impl.OfferDaoJDBC;
 import br.com.model.dao.impl.ProductDaoJDBC;
 import br.com.model.dao.impl.SectorDaoJDBC;
@@ -36,5 +37,9 @@ public class DaoFactory {
 	
 	public static OfferDao createOffer() {
 		return new OfferDaoJDBC(DB.getConnection());
+	}
+	
+	public static BannerSliderDao createBannerSlider() {
+		return new BannerSliderDaoJDBC(DB.getConnection());
 	}
 }

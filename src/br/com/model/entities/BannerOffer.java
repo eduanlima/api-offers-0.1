@@ -16,7 +16,7 @@ public class BannerOffer implements Serializable{
 	
 	public BannerOffer() {}
 	
-	public BannerOffer(Integer id, Store store, Sector sector, Date dateInitial, Date dateLimit, String title, Boolean status) {
+	public BannerOffer(Integer id, Store store, String title, Date dateInitial, Date dateLimit, String image, Boolean status) {
 		this.id = id;
 		this.store = store;
 		this.title = title;

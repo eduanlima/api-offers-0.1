@@ -21,8 +21,12 @@ public class ServiceOfferAPI {
 	@Produces(MediaType.APPLICATION_JSON + CHARSET_UTF8)
 	public List<Offer> findAllOffers(@PathParam("id_store") Integer id_store) {
 		List<Offer> offers = new ArrayList<Offer>();
-		OfferService serviceOffer = new OfferService();
-		offers = serviceOffer.findAllByStore(id_store);
+		OfferService serviceOffer;
+		serviceOffer = new OfferService();
+		offers = serviceOffer.findAllOfferBanner(id_store);
+		
+		serviceOffer = new OfferService();
+		offers.addAll(serviceOffer.findAllOfferSingle(id_store));
 		return offers;
 	}
 }
