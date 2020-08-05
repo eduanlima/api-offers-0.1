@@ -18,13 +18,21 @@ import br.com.model.entities.TypeStore;
 public class StoreDaoJDBC implements StoreDao{
 	private static final String SELECT_ALL = "SELECT * FROM store;";
 	private static final String SELECT_ONE = "SELECT * FROM store WHERE id = ?";
-	private static final String SELECT_WITH_OFFERS = "SELECT store.id AS store_id, store.name AS name, store.image AS store_image, "
-														+ "product.id AS product_id, product.description AS description, "
-														+ "product.sector AS sector_id, offer.price AS price, offer.image AS offer_image, "
-														+ "offer.date_initial AS date_initial, offer.date_limit AS date_limit, "
-														+ "offer.status AS status "
-														+ "FROM product, offer, store WHERE offer.status = true AND store.id = ? "
-														+ "AND offer.store = store.id AND offer.product = product.id;  ";
+	private static final String SELECT_WITH_OFFER_BANNER = "SELECT store.name AS name, store.image AS store_image, offer_banner.store AS id_store, "
+			+ "offer_banner.product AS id_product, offer_banner.description AS offer_description, price, image_min, date_initial, date_limit, "
+			+ "mapped, sector.id AS sector "
+			+ "FROM store, offer_banner, product, sector "
+			+ "WHERE store.id = ? AND offer_banner.store = store.id AND offer_banner.mapped = true AND offer_banner.status = true AND"
+			+ "product.id = offer_banner.product AND product.sector = sector.id "
+			+ "ORDER BY price;";
+	private static final String SELECT_WITH_OFFER_SINGLE = "SELECT store.name AS name, store.image AS store_image, offer_single.store AS id_store, "
+			+ "offer_single.product AS id_product, offer_single.description AS offer_description, price, image_min, date_initial, date_limit, "
+			+ "mapped, sector.id AS sector "
+			+ "FROM store, offer_single, product, sector "
+			+ "WHERE store.id = ? AND offer_single.store = store.id AND offer_single.mapped = true AND offer_single.status = true AND"
+			+ "product.id = offer_single.product AND product.sector = sector.id "
+			+ "ORDER BY price;";
+	
 	private Connection connection = null;
 	
 	public StoreDaoJDBC(Connection connection) {
@@ -95,71 +103,4 @@ public class StoreDaoJDBC implements StoreDao{
 		}
 	}
 
-	@Override
-	public Store findWithOffers(Integer store_id) {
-		PreparedStatement query = null;
-		ResultSet resultSet = null;
-		Store store = null;
-		Sector sector = null;
-		Product product = null;
-		Offer offer = null;
-		List<Offer> offers = new ArrayList<Offer>();
-		int store_id_aux = 0;
-		
-		try {
-			query = connection.prepareStatement(SELECT_WITH_OFFERS);
-			query.setInt(1, store_id);
-			
-			resultSet = query.executeQuery();
-			
-			while (resultSet.next()) {
-				//Get datas store
-				if (store_id_aux  == 0) {
-					store_id_aux = resultSet.getInt("store_id");
-					
-					store = new Store();
-					store.setId(store_id_aux );
-					store.setName(resultSet.getString("name"));
-					store.setImage(resultSet.getString("store_image"));
-				}
-				
-				//Get sector
-				sector = new Sector();
-				sector.setId(resultSet.getInt("sector_id"));
-				
-				//Get datas product
-				product = new Product();
-				product.setId(resultSet.getInt("product_id"));
-				product.setSector(sector);
-				product.setDescription(resultSet.getString("description"));
-				
-				//Get datas offer
-				offer = new Offer();
-				offer.setStore(store);
-				offer.setProduct(product);
-				offer.setPrice(resultSet.getDouble("price"));
-				offer.setImage(resultSet.getString("offer_image"));
-				offer.setDateInitial(resultSet.getDate("date_initial"));
-				offer.setDateLimit(resultSet.getDate("date_limit"));
-				offer.setStatus(resultSet.getBoolean("status"));
-				
-				offers.add(offer);
-				
-			}
-			
-			//store.setOffers(offers);
-			
-			return store;
-			
-		}
-		catch(SQLException error) {
-			throw new RuntimeException(error);
-		}
-		finally {
-			DB.closeResultset(resultSet);
-			DB.closeStatement(query);
-			DB.closeConnection();
-			DB.replaceConnection();
-		}
-	}
 }

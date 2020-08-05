@@ -11,16 +11,18 @@ public class Store implements Serializable{
 	private String name;
 	private String image;
 	private TypeStore typeStore;
-	private List<Offer> offers = new ArrayList<Offer>();
+	private List<Offer> offers;
+	private List<Contact> contacts;
 	
 	public Store() {}
 
-	public Store(Integer id, String name, String image, TypeStore type, List<Offer> offerrs) {
+	public Store(Integer id, String name, String image, TypeStore type, List<Offer> offerrs, List<Contact> contacts) {
 		this.id = id;
 		this.name = name;
 		this.image = image;
 		this.typeStore = type;
 		this.offers = offerrs;
+		this.contacts = contacts;
 	}
 
 	public Integer getId() {
@@ -62,6 +64,14 @@ public class Store implements Serializable{
 
 	public void setOffers(List<Offer> offerrs) {
 		this.offers = offerrs;
+	}
+	
+	public List<Contact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
 	}
 
 	@Override

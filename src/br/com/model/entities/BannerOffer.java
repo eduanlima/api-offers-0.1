@@ -6,8 +6,9 @@ import java.util.Date;
 public class BannerOffer implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	private Integer id;
 	private Store store;
-	private Sector sector;
+	private String title;
 	private Date dateInitial;
 	private Date dateLimit;
 	private String image;
@@ -15,14 +16,22 @@ public class BannerOffer implements Serializable{
 	
 	public BannerOffer() {}
 	
-	public BannerOffer(Store store, Sector sector, Date dateInitial, Date dateLimit, String image, Boolean status) {
-		super();
+	public BannerOffer(Integer id, Store store, Sector sector, Date dateInitial, Date dateLimit, String title, Boolean status) {
+		this.id = id;
 		this.store = store;
-		this.sector = sector;
+		this.title = title;
 		this.dateInitial = dateInitial;
 		this.dateLimit = dateLimit;
 		this.image = image;
 		this.status = status;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Store getStore() {
@@ -33,12 +42,12 @@ public class BannerOffer implements Serializable{
 		this.store = store;
 	}
 
-	public Sector getSector() {
-		return sector;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setSector(Sector sector) {
-		this.sector = sector;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Date getDateInitial() {
@@ -77,8 +86,7 @@ public class BannerOffer implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((sector == null) ? 0 : sector.hashCode());
-		result = prime * result + ((store == null) ? 0 : store.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -91,17 +99,11 @@ public class BannerOffer implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		BannerOffer other = (BannerOffer) obj;
-		if (sector == null) {
-			if (other.sector != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!sector.equals(other.sector))
-			return false;
-		if (store == null) {
-			if (other.store != null)
-				return false;
-		} else if (!store.equals(other.store))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
-	
 }

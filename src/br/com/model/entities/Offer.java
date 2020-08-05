@@ -6,25 +6,29 @@ import java.util.Date;
 public class Offer implements Serializable, Comparable<Offer>{
 
 	private static final long serialVersionUID = 1L;
-	private Store store;
-	private Product product;
-	private Double price;
-	private Date dateInitial;
-	private Date dateLimit;
-	private String image;
-	private Boolean status;
+	protected Store store;
+	protected Product product;
+	protected String description;
+	protected Double price;
+	protected Date dateInitial;
+	protected Date dateLimit;
+	protected String imageMin;
+	protected Boolean mapped;
+	protected Boolean status;
 	
 	public Offer() {}
 
-	public Offer(Store store, Product product, Double price, Date dateInitial, Date dateLimit, String image,
-			Boolean status) {
+	public Offer(Store store, Product product, String description, Double price, Date dateInitial, Date dateLimit, String imageMin,
+			Boolean mapped, Boolean status) {
 		super();
 		this.store = store;
 		this.product = product;
+		this.description = description;
 		this.price = price;
 		this.dateInitial = dateInitial;
 		this.dateLimit = dateLimit;
-		this.image = image;
+		this.imageMin = imageMin;
+		this.mapped = mapped;
 		this.status = status;
 	}
 
@@ -42,6 +46,14 @@ public class Offer implements Serializable, Comparable<Offer>{
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Double getPrice() {
@@ -68,12 +80,20 @@ public class Offer implements Serializable, Comparable<Offer>{
 		this.dateLimit = dateLimit;
 	}
 
-	public String getImage() {
-		return image;
+	public String getImageMin() {
+		return imageMin;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageMin(String imageMin) {
+		this.imageMin = imageMin;
+	}
+	
+	public Boolean getMapped() {
+		return mapped;
+	}
+
+	public void setMapped(Boolean mapped) {
+		this.mapped = mapped;
 	}
 
 	public Boolean getStatus() {

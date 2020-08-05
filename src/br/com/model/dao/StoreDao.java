@@ -5,7 +5,6 @@ import br.com.model.entities.Store;
 
 public interface StoreDao {
 	Store find(Integer store_id);
-	Store findWithOffers(Integer store_id);
 	List<Store> findAll();
 }
 

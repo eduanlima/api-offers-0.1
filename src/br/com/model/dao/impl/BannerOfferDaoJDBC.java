@@ -48,8 +48,8 @@ public class BannerOfferDaoJDBC implements BannerOfferDao{
 				
 				bannerOffer = new BannerOffer();
 				bannerOffer.setStore(store);
-				bannerOffer.setSector(sector);
-				bannerOffer.setImage(resultSet.getString("image"));
+				//bannerOffer.setSector(sector);
+				bannerOffer.setImage(resultSet.getString("imageMin"));
 				bannerOffer.setDateInitial(resultSet.getDate("date_initial"));
 				bannerOffer.setDateLimit(resultSet.getDate("date_limit"));
 				bannerOffer.setStatus(resultSet.getBoolean("status"));

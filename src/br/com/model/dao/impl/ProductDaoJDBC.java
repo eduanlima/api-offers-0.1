@@ -13,7 +13,7 @@ import br.com.model.entities.Sector;
 
 public class ProductDaoJDBC implements ProductDao{
 	
-	private static final String INSERT_PRODUCT = "INSERT INTO product (description, image, sector) VALUES (?, ?, ?);";
+	private static final String INSERT_PRODUCT = "INSERT INTO product (description, imageMin, sector) VALUES (?, ?, ?);";
 	private static final String SELECT_ALL = "SELECT * FROM product;";
 	private static final String SELECT_ALL_BY_SECTOR = "SELECT * FROM product WHERE sector = ?;";
 	private Connection connection = null;
@@ -64,7 +64,7 @@ public class ProductDaoJDBC implements ProductDao{
 				Product product = new Product();
 				product.setId(resultSet.getInt("id"));
 				product.setDescription(resultSet.getString("description"));
-				product.setImage(resultSet.getString("image"));
+				product.setImage(resultSet.getString("imageMin"));
 				
 				Sector sector = new Sector();
 				sector.setId(resultSet.getInt("sector"));
@@ -102,7 +102,7 @@ public class ProductDaoJDBC implements ProductDao{
 				Product product = new Product();
 				product.setId(resultSet.getInt("id"));
 				product.setDescription(resultSet.getString("description"));
-				product.setImage(resultSet.getString("image"));
+				product.setImage(resultSet.getString("imageMin"));
 				
 				sector = new Sector();
 				sector.setId(resultSet.getInt("sector"));

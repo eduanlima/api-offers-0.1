@@ -15,9 +15,4 @@ public class StoreService {
 	public List<Store> findAll(){
 		return storeDao.findAll();
 	}
-	
-	public Store findWithOffers(Integer store_id) {
-		return storeDao.findWithOffers(store_id);
-	}
-
 }
