@@ -9,6 +9,10 @@ import br.com.model.entities.Address;
 public class AddressService {
 	private AddressDao addressDao = DaoFactory.createAddress();
 	
+	public Address finById(Integer id) {
+		return addressDao.findById(id);
+	}
+	
 	public List<Address>findAll() {
 		return addressDao.findAll();
 	}

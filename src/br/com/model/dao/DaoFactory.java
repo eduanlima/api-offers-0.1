@@ -4,6 +4,7 @@ import br.com.db.DB;
 import br.com.model.dao.impl.AddressDaoJDBC;
 import br.com.model.dao.impl.BannerOfferDaoJDBC;
 import br.com.model.dao.impl.BannerSliderDaoJDBC;
+import br.com.model.dao.impl.FolderOfferDaoJDBC;
 import br.com.model.dao.impl.OfferDaoJDBC;
 import br.com.model.dao.impl.ProductDaoJDBC;
 import br.com.model.dao.impl.SectorDaoJDBC;
@@ -42,4 +43,9 @@ public class DaoFactory {
 	public static BannerSliderDao createBannerSlider() {
 		return new BannerSliderDaoJDBC(DB.getConnection());
 	}
+	
+	public static FolderOfferDao createFolderOffer() {
+		return new FolderOfferDaoJDBC(DB.getConnection());
+	}
+	
 }
