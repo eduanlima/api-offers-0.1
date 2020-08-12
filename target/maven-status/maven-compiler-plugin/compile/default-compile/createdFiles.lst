@@ -25,6 +25,7 @@ br\com\model\services\TypeStoreService.class
 br\com\services\ServicesStoreAPI.class
 br\com\model\entities\Store.class
 br\com\model\entities\TypeContact.class
+br\com\model\dao\OfferSingleDao.class
 br\com\model\entities\OfferSingle.class
 br\com\model\dao\OfferDao.class
 br\com\model\entities\Offer.class
@@ -42,6 +43,9 @@ br\com\model\dao\ProductDao.class
 br\com\model\entities\Address.class
 br\com\services\ServiceOfferAPI.class
 br\com\model\dao\SectorDao.class
+br\com\model\services\OfferSingleService.class
+br\com\model\dao\impl\OfferSingleDaoJDBC.class
+br\com\services\ServiceOfferSingleAPI.class
 br\com\services\ServicesAddressAPI.class
 br\com\model\entities\OfferBanner.class
 br\com\model\dao\impl\StoreDaoJDBC.class

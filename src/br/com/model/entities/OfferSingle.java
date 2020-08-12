@@ -8,11 +8,11 @@ public class OfferSingle extends Offer implements Serializable{
 	private String title;
 	private String image;
 	
-	public OfferSingle() {}
+	public OfferSingle() {super();}
 	
-	public OfferSingle(String description, String image) {
+	public OfferSingle(String title, String image) {
 		super();
-		this.description = description;
+		this.title = title;
 		this.image = image;
 	}
 	

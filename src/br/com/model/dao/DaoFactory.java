@@ -6,6 +6,7 @@ import br.com.model.dao.impl.BannerOfferDaoJDBC;
 import br.com.model.dao.impl.BannerSliderDaoJDBC;
 import br.com.model.dao.impl.FolderOfferDaoJDBC;
 import br.com.model.dao.impl.OfferDaoJDBC;
+import br.com.model.dao.impl.OfferSingleDaoJDBC;
 import br.com.model.dao.impl.ProductDaoJDBC;
 import br.com.model.dao.impl.SectorDaoJDBC;
 import br.com.model.dao.impl.StoreDaoJDBC;
@@ -48,4 +49,7 @@ public class DaoFactory {
 		return new FolderOfferDaoJDBC(DB.getConnection());
 	}
 	
+	public static OfferSingleDao createOfferSingle() {
+		return new OfferSingleDaoJDBC(DB.getConnection());
+	}
 }

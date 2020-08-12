@@ -6,12 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.db.DB;
 import br.com.model.dao.StoreDao;
-import br.com.model.entities.Offer;
-import br.com.model.entities.Product;
-import br.com.model.entities.Sector;
 import br.com.model.entities.Store;
 import br.com.model.entities.TypeStore;
 

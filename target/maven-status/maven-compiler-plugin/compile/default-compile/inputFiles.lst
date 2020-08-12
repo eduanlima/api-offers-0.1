@@ -2,6 +2,7 @@ C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\FolderOfferDao.
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\entities\Offer.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\services\FolderOfferService.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\impl\AddressDaoJDBC.java
+C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\impl\OfferSingleDaoJDBC.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\entities\Product.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\services\ServicesStoreAPI.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\db\DB.java
@@ -11,6 +12,7 @@ C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\entities\BannerOffe
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\DaoFactory.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\OfferDao.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\services\BannerOfferService.java
+C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\OfferSingleDao.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\services\ProductService.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\BannerOfferDao.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\services\TypeStoreService.java
@@ -19,6 +21,7 @@ C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\impl\FolderOffe
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\entities\BannerSlider.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\AddressDao.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\impl\SectorDaoJDBC.java
+C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\services\ServiceOfferSingleAPI.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\StoreDao.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\entities\TypeContact.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\services\AddressService.java
@@ -45,5 +48,6 @@ C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\entities\Address.ja
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\dao\impl\StoreDaoJDBC.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\entities\OfferBanner.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\services\ServicesAddressAPI.java
+C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\services\OfferSingleService.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\services\OfferService.java
 C:\Users\eduan\eclipse-workspace\api-offers\src\br\com\model\services\StoreService.java
